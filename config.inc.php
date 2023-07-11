@@ -1598,7 +1598,7 @@ $g_repositoryType = TL_REPOSITORY_TYPE_FS;
  * Put it out of reach via web or configure access denied.
  *
  **/
-$g_repositoryPath = 'C:/wamp64/www/testlinkgit/logs/';  /* unix example */
+$g_repositoryPath = 'C:/wamp64/www/testlinkgit/upload_area/';  /* unix example */
 if (($upa = getenv('TESTLINK_UPLOAD_AREA'))) {
   $g_repositoryPath = trim($upa);
 }
