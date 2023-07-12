@@ -150,7 +150,7 @@ function init_args(&$dbH)
   // ----------------------------------------------------------------
   // Feature Access Check
   // This feature is affected only for right at Test Project Level
-  $env = array()
+  $env = array();
   $env['script'] = basename(__FILE__);
   $env['tproject_id'] = $args->tproject_id;
   $args->user->checkGUISecurityClearance($dbH,$env,

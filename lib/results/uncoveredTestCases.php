@@ -117,7 +117,7 @@ function init_args(&$dbHandler)
   }
 
   $args->tproject_name = 
-    testproject::getName($dbHandler,$args->tproject_id)
+    testproject::getName($dbHandler,$args->tproject_id);
 
   return $args;
 }

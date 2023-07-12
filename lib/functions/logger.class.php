@@ -1231,7 +1231,7 @@ class tlFileLogger extends tlObject
    */
   static public function resetLogFile()
   {
-    @unlink($this->getLogFileName());
+    @unlink(self->getLogFileName());
   }
 }
 
