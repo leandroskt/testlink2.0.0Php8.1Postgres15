@@ -19,7 +19,7 @@ editorType: used to understand if code for tinymce need to be loaded
 	<meta name="robots" content="NOFOLLOW" />
 	<base href="{$basehref}"/>
 	<title>{$pageTitle|default:"TestLink"}</title>
-	<link rel="icon" href="{$basehref}{$smarty.const.TL_THEME_IMG_DIR}favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="{$basehref}gui/themes/default/images/favicon.ico" type="image/x-icon" />
 
 {$css = str_replace('default','dashio',$css)}
 {* ----- load CSS ----------------------------------------------- *} 
