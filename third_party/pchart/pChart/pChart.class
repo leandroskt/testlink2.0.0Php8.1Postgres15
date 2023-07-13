@@ -118,7 +118,7 @@
  class pChart
   {
    /* Palettes definition */
-   var $Palette = array("0"=>array("R"=>188,"G"=>224,"B"=>46),
+   public $Palette = array("0"=>array("R"=>188,"G"=>224,"B"=>46),
                         "1"=>array("R"=>224,"G"=>100,"B"=>46),
                         "2"=>array("R"=>224,"G"=>214,"B"=>46),
                         "3"=>array("R"=>46,"G"=>151,"B"=>224),
@@ -128,73 +128,73 @@
                         "7"=>array("R"=>224,"G"=>176,"B"=>46));
 
    /* Some static vars used in the class */
-   var $XSize          = NULL;
-   var $YSize          = NULL;
-   var $Picture        = NULL;
-   var $ImageMap       = NULL;
+   public $XSize          = NULL;
+   public $YSize          = NULL;
+   public $Picture        = NULL;
+   public $ImageMap       = NULL;
 
    /* Error management */
-   var $ErrorReporting = FALSE;
-   var $ErrorInterface = "CLI";
-   var $Errors         = NULL;
-   var $ErrorFontName  = "Fonts/pf_arma_five.ttf";
-   var $ErrorFontSize  = 6;
+   public $ErrorReporting = FALSE;
+   public $ErrorInterface = "CLI";
+   public $Errors         = NULL;
+   public $ErrorFontName  = "Fonts/pf_arma_five.ttf";
+   public $ErrorFontSize  = 6;
 
    /* vars related to the graphing area */
-   var $GArea_X1        = NULL;
-   var $GArea_Y1        = NULL;
-   var $GArea_X2        = NULL;
-   var $GArea_Y2        = NULL;
-   var $GAreaXOffset    = NULL;
-   var $VMax            = NULL;
-   var $VMin            = NULL;
-   var $VXMax           = NULL;
-   var $VXMin           = NULL;
-   var $Divisions       = NULL;
-   var $XDivisions      = NULL;
-   var $DivisionHeight  = NULL;
-   var $XDivisionHeight = NULL;
-   var $DivisionCount   = NULL;
-   var $XDivisionCount  = NULL;
-   var $DivisionRatio   = NULL;
-   var $XDivisionRatio  = NULL;
-   var $DivisionWidth   = NULL;
-   var $DataCount       = NULL;
-   var $Currency        = "\$";
+   public $GArea_X1        = NULL;
+   public $GArea_Y1        = NULL;
+   public $GArea_X2        = NULL;
+   public $GArea_Y2        = NULL;
+   public $GAreaXOffset    = NULL;
+   public $VMax            = NULL;
+   public $VMin            = NULL;
+   public $VXMax           = NULL;
+   public $VXMin           = NULL;
+   public $Divisions       = NULL;
+   public $XDivisions      = NULL;
+   public $DivisionHeight  = NULL;
+   public $XDivisionHeight = NULL;
+   public $DivisionCount   = NULL;
+   public $XDivisionCount  = NULL;
+   public $DivisionRatio   = NULL;
+   public $XDivisionRatio  = NULL;
+   public $DivisionWidth   = NULL;
+   public $DataCount       = NULL;
+   public $Currency        = "\$";
 
    /* Text format related vars */
-   var $FontName       = NULL;
-   var $FontSize       = NULL;
-   var $DateFormat     = "d/m/Y";
+   public $FontName       = NULL;
+   public $FontSize       = NULL;
+   public $DateFormat     = "d/m/Y";
 
    /* Lines format related vars */
-   var $LineWidth      = 1;
-   var $LineDotSize    = 0;
+   public $LineWidth      = 1;
+   public $LineDotSize    = 0;
 
    /* Layer related vars */
-   var $Layers         = NULL;
+   public $Layers         = NULL;
 
    /* Set antialias quality : 0 is maximum, 100 minimum*/
-   var $AntialiasQuality = 0;
+   public $AntialiasQuality = 0;
 
    /* Shadow settings */
-   var $ShadowActive    = FALSE;
-   var $ShadowXDistance = 1;
-   var $ShadowYDistance = 1;
-   var $ShadowRColor    = 60;
-   var $ShadowGColor    = 60;
-   var $ShadowBColor    = 60;
-   var $ShadowAlpha     = 50;
-   var $ShadowBlur      = 0;
+   public $ShadowActive    = FALSE;
+   public $ShadowXDistance = 1;
+   public $ShadowYDistance = 1;
+   public $ShadowRColor    = 60;
+   public $ShadowGColor    = 60;
+   public $ShadowBColor    = 60;
+   public $ShadowAlpha     = 50;
+   public $ShadowBlur      = 0;
 
    /* Image Map settings */
-   var $BuildMap         = FALSE;
-   var $MapFunction      = NULL;
-   var $tmpFolder        = "tmp/";
-   var $MapID            = NULL;
+   public $BuildMap         = FALSE;
+   public $MapFunction      = NULL;
+   public $tmpFolder        = "tmp/";
+   public $MapID            = NULL;
 
    /* This function create the background picture */
-   function pChart($XSize,$YSize)
+   function __construct($XSize,$YSize)
     {
      $this->XSize   = $XSize;
      $this->YSize   = $YSize;
@@ -2383,7 +2383,8 @@
      $SplicePercent       = 100 / ($PieSum > 0 ? $PieSum : 1);
 
      /* Calculate all polygons */
-     $Angle    = 0; $TopPlots = array();
+     $Angle    = 0; 
+     $TopPlots = array();
      foreach($iValues as $Key => $Value)
       {
        $TopPlots[$Key][] = $XPos;
@@ -2394,14 +2395,18 @@
        if ( !($DrawLabels == PIE_NOLABEL) )
         {
          $TAngle   = $Angle+($Value*$SpliceRatio/2);
-         if ($DrawLabels == PIE_PERCENTAGE)
+         if ($DrawLabels == PIE_PERCENTAGE){
           $Caption  = (round($Value * pow(10,$Decimals) * $SplicePercent)/pow(10,$Decimals))."%";
-         elseif ($DrawLabels == PIE_LABELS)
+         }
+         elseif ($DrawLabels == PIE_LABELS){
           $Caption  = $iLabels[$Key];
-         elseif ($DrawLabels == PIE_PERCENTAGE_LABEL)
+         }
+         elseif ($DrawLabels == PIE_PERCENTAGE_LABEL){
           $Caption  = $iLabels[$Key]."\r\n".(round($Value * pow(10,$Decimals) * $SplicePercent)/pow(10,$Decimals))."%";
-         elseif ($DrawLabels == PIE_PERCENTAGE_LABEL)
+         }
+         elseif ($DrawLabels == PIE_PERCENTAGE_LABEL){
           $Caption  = $iLabels[$Key]."\r\n".(round($Value * pow(10,$Decimals) * $SplicePercent)/pow(10,$Decimals))."%";
+         }
 
          $Position   = imageftbbox($this->FontSize,0,$this->FontName,$Caption);
          $TextWidth  = $Position[2]-$Position[0];
@@ -2409,13 +2414,15 @@
 
          $TX = cos(($TAngle) * 3.1418 / 180 ) * ($Radius+10) + $XPos;
 
-         if ( $TAngle > 0 && $TAngle < 180 )
+         if ( $TAngle > 0 && $TAngle < 180 ){
           $TY = sin(($TAngle) * 3.1418 / 180 ) * ($Radius+10) + $YPos + 4;
-         else
+         }
+         else{
           $TY = sin(($TAngle) * 3.1418 / 180 ) * ($Radius+4) + $YPos - ($TextHeight/2);
-
-         if ( $TAngle > 90 && $TAngle < 270 )
+         }
+         if ( $TAngle > 90 && $TAngle < 270 ){
           $TX = $TX - $TextWidth;
+         }
 
          $C_TextColor = $this->AllocateColor($this->Picture,70,70,70);
          imagettftext($this->Picture,$this->FontSize,0,$TX,$TY,$C_TextColor,$this->FontName,$Caption);
@@ -3314,7 +3321,7 @@
         }
       }
 
-     if ( max($DataSummary) == 0 )
+     if ( empty($DataSummary) );
       $this->Errors[] = "[Warning] ".$FunctionName." - No data set.";
 
      foreach($DataSummary as $key => $Value)
@@ -3329,7 +3336,7 @@
    /* Print all error messages on the CLI or graphically */
    function printErrors($Mode="CLI")
     {
-     if (count($this->Errors) == 0)
+     if (!isset($this->Errors))
       return(0);
 
      if ( $Mode == "CLI" )

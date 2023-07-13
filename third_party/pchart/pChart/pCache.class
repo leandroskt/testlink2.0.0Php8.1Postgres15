@@ -34,11 +34,11 @@
  /* pCache class definition */
  class pCache
   {
-   var $HashKey     = "";
-   var $CacheFolder = "Cache/";
+   public $HashKey     = "";
+   public $CacheFolder = "Cache/";
 
    /* Create the pCache object */
-   function pCache($CacheFolder="Cache/")
+   function __construct($CacheFolder="Cache/")
     {
      $this->CacheFolder = $CacheFolder;
     }
