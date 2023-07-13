@@ -151,8 +151,8 @@ if( $doIt ) {
         array('format' => $args->format,
               'show_platforms' => $gui->show_platforms);
 
-      $gui->tableSet[] = buildMatrix($gui->dataSet, $args, $tableOpt ,
-                                     $gui->platformSet,$cfSet);
+      $gui->tableSet[] = buildMatrix($gui->dataSet, $args ,
+                                     $gui->platformSet,$cfSet, $tableOpt);
     break;
   } 
 }
@@ -328,7 +328,7 @@ function buildMailCfg(&$guiObj) {
  * return tlExtTable
  *
  */
-function buildMatrix($dataSet, &$args, $options = array(), $platforms,$customFieldColumns=null) {
+function buildMatrix($dataSet, &$args, $platforms,$customFieldColumns=null, $options = array()) {
   $default_options = 
     array('show_platforms' => false,'format' => FORMAT_HTML);
   $options = array_merge($default_options, $options);
