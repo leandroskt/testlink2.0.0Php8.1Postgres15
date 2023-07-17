@@ -433,8 +433,10 @@ function createSpreadsheet($gui,$args,&$tplanMgr) {
     $nameKey = $target['nameKey'];
     $tcQtyKey = $target['tcQtyKey'];
 
-    if( count($target['source']) == 0 ) {
-      continue;
+    if( isset($target['source']) ) {
+      if ( count($target['source']) == 0){
+        continue;
+      }
     }
 
     // Just ONE HEADER ?

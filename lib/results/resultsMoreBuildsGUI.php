@@ -72,11 +72,11 @@ function initializeGui(&$dbHandler,$args)
     
     $tplan_info = $tplan_mgr->get_by_id($gui->tplan_id);
     $gui->tplan_name = $tplan_info['name'];
-	unset($tplan_info);
+	  unset($tplan_info);
 	
     $ni = $tplan_mgr->tree_manager->get_node_hierarchy_info($gui->tproject_id);
     $gui->tproject_name = $ni['name'];
-	unset($ni);
+	  unset($ni);
 
     $gui->assigned_users = new stdClass();
     $gui->keywords = new stdClass();
@@ -99,7 +99,7 @@ function initializeGui(&$dbHandler,$args)
 
     $gui->builds->items = $tplan_mgr->get_builds($gui->tplan_id,testplan::ACTIVE_BUILDS);
     $gui->platforms->items = $tplan_mgr->getPlatforms($gui->tplan_id);
-	$gui->testsuites->items = $tplan_mgr->getRootTestSuites($gui->tplan_id,$gui->tproject_id,
+	  $gui->testsuites->items = $tplan_mgr->getRootTestSuites($gui->tplan_id,$gui->tproject_id,
 															array('output' => 'plain'));
 
     $gui->keywords->items[0]=$gui->str_option_any;
@@ -109,7 +109,7 @@ function initializeGui(&$dbHandler,$args)
     }
 
 
-	$key2loop = array('keywords','builds','platforms','testsuites','assigned_users');
+	  $key2loop = array('keywords','builds','platforms','testsuites','assigned_users');
     foreach($key2loop as $kx)
     {
     	$gui->$kx->qty = count($gui->$kx->items);
@@ -119,8 +119,8 @@ function initializeGui(&$dbHandler,$args)
     $gui->report_type = $args->format;
 
     $reports_cfg = config_get('reportsCfg');
-	$ldf = config_get('locales_date_format');
-	$date_format = $ldf[((isset($_SESSION['locale'])) ? $_SESSION['locale'] : 'en_GB')];		
+	  $ldf = config_get('locales_date_format');
+	  $date_format = $ldf[((isset($_SESSION['locale'])) ? $_SESSION['locale'] : 'en_GB')];		
     $gui->selected_start_date = @strftime($date_format, time() - ($reports_cfg->start_date_offset));
     $gui->selected_start_time = $reports_cfg->start_time;
     $gui->selected_end_date = @strftime($date_format, time());
@@ -142,8 +142,7 @@ function init_args(&$dbHandler)
     $nn = $tplan->get_by_id($args->tplan_id);
     $args->tproject_id = $nn['testproject_id'];    
   }
-
-  $args->tproject_name = testproject::getName($db,$args->tproject_id);
+  $args->tproject_name = testproject::getName($dbHandler,$args->tproject_id);
 
   return $args;
 }
